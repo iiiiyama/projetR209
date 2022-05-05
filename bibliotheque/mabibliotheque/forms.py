@@ -5,11 +5,11 @@ from . import models
 class FilmForm(ModelForm):
     class Meta:
         model = models.Film
-        fields = ('titre', 'réalisateur', 'date_sortie', 'durée','resume')
+        fields = ('titre', 'realisateur', 'date_sortie', 'duree','resume')
         labels = {
             'titre' : _('Titre'),
-            'réalisateur' : _('Réalisateur') ,
+            'realisateur' : _('Realisateur') ,
             'date_sortie' : _('Date_sortie'),
-            'durée' : _('Durée'),
-            'resume' : _('Résumé')
+            'duree' : _('Duree'),
+            'resume' : _('Résume')
         }
