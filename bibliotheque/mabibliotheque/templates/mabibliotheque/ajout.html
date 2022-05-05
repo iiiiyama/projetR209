@@ -5,10 +5,14 @@
 <title>ajout d'un nouveau film</title>
 </head>
 <body>
-<form method="post" action="/bibliotheque/traitement/">
-{% csrf_token %}
-{{ form.as_ul }}
-<input type="submit" value="envoyer␣les␣renseignements"\>
+    {% if id != ''%}
+    <form method="post" action="/bibliotheque/updatetraitement/{{id}}/"></form>
+    {% else %}
+        <form method="post" action="/bibliotheque/traitement/">
+    {%endif%}
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="envoyer␣les␣renseignements"\>
 </form>
 </body>
 </html>
