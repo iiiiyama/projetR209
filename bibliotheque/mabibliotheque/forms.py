@@ -2,14 +2,14 @@ from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from . import models
 
-class LivreForm(ModelForm):
+class FilmForm(ModelForm):
     class Meta:
-        model = models.Livre
-        fields = ('titre', 'auteur', 'date_parution', 'nombre_pages','resume')
+        model = models.Film
+        fields = ('titre', 'réalisateur', 'date_sortie', 'durée','resume')
         labels = {
             'titre' : _('Titre'),
-            'auteur' : _('Auteur') ,
-            'date_parution' : _('date␣de␣parution'),
-            'nombre_pages' : _('nombres␣de␣pages'),
+            'réalisateur' : _('Réalisateur') ,
+            'date_sortie' : _('Date_sortie'),
+            'durée' : _('Durée'),
             'resume' : _('Résumé')
         }

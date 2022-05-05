@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>ajout d'un nouveau film</title>
 </head>
 <body>
 <form method="post" action="/bibliotheque/traitement/">
 {% csrf_token %}
 {{ form.as_ul }}
-<input type="submit" value="envoyer␣les␣données"\>
+<input type="submit" value="envoyer␣les␣renseignements"\>
 </form>
 </body>
 </html>
