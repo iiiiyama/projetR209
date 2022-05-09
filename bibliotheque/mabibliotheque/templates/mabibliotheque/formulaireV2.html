@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ajout d'un nouveau film</title>
+    <meta charset="UTF-8">
+    <title>Ajout d'un acteur</title>
 </head>
 <body>
     {% if id != None %}
     <form method="post" action="/mabibliotheque/updatetraitement/{{id}}/"></form>
     {% else %}
-        <form method="post" action="/mabibliotheque/traitement/">
+        <form method="post" action="/mabibliotheque/formulaireV2/">
     {%endif%}
     {% csrf_token %}
     {{ form.as_ul }}

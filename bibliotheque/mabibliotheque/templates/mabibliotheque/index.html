@@ -7,9 +7,10 @@
 <body>
 <h1> Bibliotheque de film </h1>
 <a href="/mabibliotheque/ajout"> répertorié un film </a>
+<a href="/mabibliotheque/formulaire V2"> répertorier un acteur</a>
 <ol>
     {% for l in liste %}
-        <li> {{l}} <a href="/biliotheque/affiche/{{l.id}}/">montrer</a> <a href="/biliotheque/update/{{l.id}}/"> editer</a></li>
+        <li> {{l}} <a href="/mabibliotheque/affiche/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update/{{l.id}}/"> editer</a></li>
     {% endfor %}
 </ol>
 

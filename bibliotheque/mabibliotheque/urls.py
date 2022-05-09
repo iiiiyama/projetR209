@@ -8,4 +8,6 @@ path('affiche/', views.traitement),
 path('affiche/<int:id>/',views.affiche),
 path('update/<int:id>/',views.update),
 path('updatetraitement/<int:id>/', views.updatetraitement),
+path('formulaireV2/', views.formulaireV2),
+path('traitement/', views.traitement),
 ]
