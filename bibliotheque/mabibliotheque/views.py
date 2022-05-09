@@ -22,7 +22,7 @@ def traitement(request):
         film = lform.save()
         return HttpResponseRedirect("/bibliotheque/")
     else:
-        return render(request,"bibliotheque/ajout.html", {"form": lform})
+        return render(request,"mabibliotheque/ajout.html", {"form": lform})
 
 def index(request):
     liste = list(models.Film.objects.all())
@@ -30,16 +30,16 @@ def index(request):
 
 def affiche(request, id):
     film = models.Film.objects.get(pk=id)
-    return render(request, "bibliotheque/affiche.html", {"film": film})
+    return render(request, "mabibliotheque/affiche.html", {"film": film})
 
 def formulaire(request):
     film = models.Film.objects.get(pk=id)
-    return render(request, "bibliotheque/formulaire.html", {"film": film})
+    return render(request, "mabibliotheque/formulaire.html", {"film": film})
 
 def update(request, id):
     film  =models.Film.objects.get(pk=id)
     form = FilmForm(film.repertoire())
-    return render(request, "film/ajout.html",{"form":form, "id":id})
+    return render(request, "mabibliotheque/ajout.html",{"form":form, "id":id})
 
 def updatetraitement(request, id):
     lform = FilmForm(request.POST)
@@ -49,4 +49,4 @@ def updatetraitement(request, id):
         film.save()
         return HttpResponseRedirect("/bibliotheque/")
     else:
-        return render(request, "bibliotheque/ajout.html", {"form": lform, "id": id})
+        return render(request, "mabibliotheque/ajout.html", {"form": lform, "id": id})

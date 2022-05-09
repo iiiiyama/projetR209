@@ -6,11 +6,12 @@
 </head>
 <body>
 <h1> Bibliotheque de film </h1>
-<a href="/bibliotheque/ajout"> répertorié un film </a>
+<a href="/mabibliotheque/ajout"> répertorié un film </a>
 <ol>
-    {% for l in list %}
+    {% for l in liste %}
         <li> {{l}} <a href="/biliotheque/affiche/{{l.id}}/">montrer</a> <a href="/biliotheque/update/{{l.id}}/"> editer</a></li>
     {% endfor %}
 </ol>
+
 </body>
 </html>
