@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 
 # Create your views here.
 from .forms import FilmForm
+from .forms import ActeurForm
 from . import models
 
 def ajout(request):
@@ -57,7 +58,7 @@ def delete(request, id):
     film.delete()
     return HttpResponseRedirect("/mabibliotheque/index/")
 
-######################## second formulaire #####################################
+########################################## second formulaire #################################################
 
 def formulaire2(request):
     if request.method == "POST":
@@ -68,10 +69,37 @@ def formulaire2(request):
         else:
             return render(request, "mabibliotheque/formulaire2.html", {"form": form})
     else:
-        form = FilmForm()
+        form = ActeurForm()
         return render(request, "mabibliotheque/formulaire2.html", {"form": form})
 
-def delete(request, id):
-    film = models.Film.objects.get(pk=id)
-    film.delete()
+def delete2(request, id):
+    acteur = models.acteur.objects.get(pk=id)
+    acteur.delete()
     return HttpResponseRedirect("/mabibliotheque/index/")
+
+def update2(request, id):
+    acteur = models.acteur.objects.get(pk=id)
+    form = ActeurForm(acteur.repertoire2())
+    return render(request, "mabibliotheque/formulaire2.html",{"form":form, "id":id})
+
+def traitement2(request):
+    lform = ActeurForm(request.POST)
+    if lform.is_valid():
+        acteur = lform.save()
+        return HttpResponseRedirect("/mabibliotheque/index/")
+    else:
+        return render(request,"mabibliotheque/formulaire2.html", {"form": lform})
+
+def updatetraitement2(request, id):
+    lform = ActeurForm(request.POST)
+    if lform.is_valid():
+        acteur = lform.save(commit=False)
+        acteur.id = id
+        acteur.save()
+        return HttpResponseRedirect("/mabibliotheque/index/")
+    else:
+        return render(request, "mabibliotheque/formulaire2.html", {"form": lform, "id": id})
+
+def affiche2(request, id):
+    acteur = models.Acteur.objects.get(pk=id)
+    return render(request, "mabibliotheque/affiche2.html", {"acteur": acteur})

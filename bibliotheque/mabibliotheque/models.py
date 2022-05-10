@@ -16,11 +16,14 @@ class Film(models.Model):
         return {"titre":self.titre, "realisateur":self.realisateur, "date_sortie":self.date_sortie, "duree":self.duree, "resume":self.resume}
 
 class Acteur(models.Model):
-    Nom = models.CharField(max_length=50)
+    nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
-    Date_de_naissance = models.DateField(blank=True, null=True)
-    Filmographie = models.CharField(max_length=50)
+    date_de_naissance = models.DateField(blank=True, null=True)
+    filmographie = models.CharField(max_length=50)
 
     def __str__(self):
-        chaine = f"{self.prenom}{self.nom} né le {self.Date_de_naissance}"
+        chaine = f"{self.prenom}{self.nom} né le {self.date_de_naissance}"
         return chaine
+
+    def repertoire2(self):
+        return {"nom":self.nom, "prenom":self.prenom, "date_de_naissance":self.date_de_naissance, "filmographie":self.filmographie}
