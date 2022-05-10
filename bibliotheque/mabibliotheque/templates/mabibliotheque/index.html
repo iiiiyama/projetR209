@@ -19,7 +19,7 @@
 </ol>
 <ol> <h3> Ma liste d'acteurs</h3>
     {% for l in liste %}
-        <li> {{l}} <a href="/mabibliotheque/affiche2/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update2/{{l.id}}/"> editer</a> <a href="/mabibliotheque/delete2/{{l.id}}/"> supprimer</a></li>
+        <li> {{l}} <a href="/mabibliotheque/affiche2/{{a.id}}/">montrer</a> <a href="/mabibliotheque/update2/{{a.id}}/"> editer</a> <a href="/mabibliotheque/delete2/{{a.id}}/"> supprimer</a></li>
     {% endfor %}
 </ol>
 {% endblock %}

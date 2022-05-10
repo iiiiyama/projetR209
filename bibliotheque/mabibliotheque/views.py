@@ -83,22 +83,22 @@ def update2(request, id):
     return render(request, "mabibliotheque/formulaire2.html",{"form":form, "id":id})
 
 def traitement2(request):
-    lform = ActeurForm(request.POST)
-    if lform.is_valid():
-        acteur = lform.save()
+    aform = ActeurForm(request.POST)
+    if aform.is_valid():
+        acteur = aform.save()
         return HttpResponseRedirect("/mabibliotheque/index/")
     else:
-        return render(request,"mabibliotheque/formulaire2.html", {"form": lform})
+        return render(request,"mabibliotheque/formulaire2.html", {"form": aform})
 
 def updatetraitement2(request, id):
-    lform = ActeurForm(request.POST)
-    if lform.is_valid():
-        acteur = lform.save(commit=False)
+    aform = ActeurForm(request.POST)
+    if aform.is_valid():
+        acteur = aform.save(commit=False)
         acteur.id = id
         acteur.save()
         return HttpResponseRedirect("/mabibliotheque/index/")
     else:
-        return render(request, "mabibliotheque/formulaire2.html", {"form": lform, "id": id})
+        return render(request, "mabibliotheque/formulaire2.html", {"form": aform, "id": id})
 
 def affiche2(request, id):
     acteur = models.Acteur.objects.get(pk=id)
