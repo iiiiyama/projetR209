@@ -6,10 +6,10 @@
 </head>
 <body>
     {% if id != None %}
-    <form method="post" action="/mabibliotheque/updatetraitement/{{id}}/"></form>
+    <form method="post" action="/mabibliotheque/updatetraitement/{{id}}/">
     {% else %}
-        <form method="post" action="/mabibliotheque/formulaireV2/">
-    {%endif%}
+        <form method="post" action="/mabibliotheque/formulaire2/">
+    {% endif %}
     {% csrf_token %}
     {{ form.as_ul }}
     <input type="submit" value="envoyer les renseignements">

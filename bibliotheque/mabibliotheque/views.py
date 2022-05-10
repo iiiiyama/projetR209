@@ -20,7 +20,7 @@ def traitement(request):
     lform = FilmForm(request.POST)
     if lform.is_valid():
         film = lform.save()
-        return HttpResponseRedirect("/bibliotheque/")
+        return HttpResponseRedirect("/mabibliotheque/index/")
     else:
         return render(request,"mabibliotheque/ajout.html", {"form": lform})
 
@@ -31,6 +31,7 @@ def index(request):
 def affiche(request, id):
     film = models.Film.objects.get(pk=id)
     return render(request, "mabibliotheque/affiche.html", {"film": film})
+
 
 def formulaire(request):
     film = models.Film.objects.get(pk=id)
@@ -47,22 +48,30 @@ def updatetraitement(request, id):
         film = lform.save(commit=False)
         film.id = id
         film.save()
-        return HttpResponseRedirect("/mabibliotheque/")
+        return HttpResponseRedirect("/mabibliotheque/index/")
     else:
         return render(request, "mabibliotheque/ajout.html", {"form": lform, "id": id})
 
-def affiche(request, id):
+def delete(request, id):
     film = models.Film.objects.get(pk=id)
-    return render(request,"bibliotheque/affiche.html",{"film": film})
+    film.delete()
+    return HttpResponseRedirect("/mabibliotheque/index/")
 
-def formulaireV2(request):
+######################## second formulaire #####################################
+
+def formulaire2(request):
     if request.method == "POST":
-        form = FilmForm(request)
+        form = ActeurForm(request)
         if form.is_valid():
-            acteur = form.save()
-            return render(request, "mabibliotheque/affiche.html", {"acteur": acteur})
+            Acteur = form.save()
+            return render(request, "mabibliotheque/affiche.html", {"acteur": Acteur})
         else:
-            return render(request, "mabibliotheque/ajout.html", {"form": form})
+            return render(request, "mabibliotheque/formulaire2.html", {"form": form})
     else:
         form = FilmForm()
-        return render(request, "mabibliotheque/ajout.html", {"form": form})
+        return render(request, "mabibliotheque/formulaire2.html", {"form": form})
+
+def delete(request, id):
+    film = models.Film.objects.get(pk=id)
+    film.delete()
+    return HttpResponseRedirect("/mabibliotheque/index/")
