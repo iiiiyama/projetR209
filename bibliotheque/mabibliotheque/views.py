@@ -62,10 +62,10 @@ def delete(request, id):
 
 def formulaire2(request):
     if request.method == "POST":
-        form = ActeurForm(request)
+        form = ActeurForm(request.POST)
         if form.is_valid():
-            Acteur = form.save()
-            return render(request, "mabibliotheque/affiche.html", {"acteur": Acteur})
+            acteur = form.save()
+            return render(request, "mabibliotheque/affiche.html", {"acteur": acteur})
         else:
             return render(request, "mabibliotheque/formulaire2.html", {"form": form})
     else:
@@ -73,32 +73,32 @@ def formulaire2(request):
         return render(request, "mabibliotheque/formulaire2.html", {"form": form})
 
 def delete2(request, id):
-    acteur = models.acteur.objects.get(pk=id)
+    acteur = models.Acteur.objects.get(pk=id)
     acteur.delete()
     return HttpResponseRedirect("/mabibliotheque/index/")
 
 def update2(request, id):
-    acteur = models.acteur.objects.get(pk=id)
+    acteur = models.Acteur.objects.get(pk=id)
     form = ActeurForm(acteur.repertoire2())
     return render(request, "mabibliotheque/formulaire2.html",{"form":form, "id":id})
 
 def traitement2(request):
-    aform = ActeurForm(request.POST)
-    if aform.is_valid():
-        acteur = aform.save()
+    lform = ActeurForm(request.POST)
+    if lform.is_valid():
+        acteur = lform.save()
         return HttpResponseRedirect("/mabibliotheque/index/")
     else:
-        return render(request,"mabibliotheque/formulaire2.html", {"form": aform})
+        return render(request,"mabibliotheque/formulaire2.html", {"form": lform})
 
 def updatetraitement2(request, id):
-    aform = ActeurForm(request.POST)
-    if aform.is_valid():
-        acteur = aform.save(commit=False)
+    form = ActeurForm(request.POST)
+    if form.is_valid():
+        acteur = form.save(commit=False)
         acteur.id = id
         acteur.save()
         return HttpResponseRedirect("/mabibliotheque/index/")
     else:
-        return render(request, "mabibliotheque/formulaire2.html", {"form": aform, "id": id})
+        return render(request, "mabibliotheque/formulaire2.html", {"form": form, "id": id})
 
 def affiche2(request, id):
     acteur = models.Acteur.objects.get(pk=id)
