@@ -65,12 +65,16 @@ def formulaire2(request):
         form = ActeurForm(request.POST)
         if form.is_valid():
             acteur = form.save()
-            return render(request, "mabibliotheque/affiche.html", {"acteur": acteur})
+            return render(request, "mabibliotheque/affiche2.html", {"acteur": acteur})
         else:
             return render(request, "mabibliotheque/formulaire2.html", {"form": form})
     else:
         form = ActeurForm()
         return render(request, "mabibliotheque/formulaire2.html", {"form": form})
+
+def index2(request):
+    liste2 = list(models.Acteur.objects.all())
+    return render(request,"mabibliotheque/index2.html",{"liste2": liste2})
 
 def delete2(request, id):
     acteur = models.Acteur.objects.get(pk=id)
@@ -83,12 +87,12 @@ def update2(request, id):
     return render(request, "mabibliotheque/formulaire2.html",{"form":form, "id":id})
 
 def traitement2(request):
-    lform = ActeurForm(request.POST)
-    if lform.is_valid():
-        acteur = lform.save()
-        return HttpResponseRedirect("/mabibliotheque/index/")
+    aform = ActeurForm(request.POST)
+    if aform.is_valid():
+        acteur = aform.save()
+        return HttpResponseRedirect("/mabibliotheque/index2/")
     else:
-        return render(request,"mabibliotheque/formulaire2.html", {"form": lform})
+        return render(request,"mabibliotheque/formulaire2.html", {"form": aform})
 
 def updatetraitement2(request, id):
     form = ActeurForm(request.POST)
@@ -96,7 +100,7 @@ def updatetraitement2(request, id):
         acteur = form.save(commit=False)
         acteur.id = id
         acteur.save()
-        return HttpResponseRedirect("/mabibliotheque/index/")
+        return HttpResponseRedirect("/mabibliotheque/index2/")
     else:
         return render(request, "mabibliotheque/formulaire2.html", {"form": form, "id": id})
 

@@ -22,7 +22,7 @@ class Acteur(models.Model):
     filmographie = models.CharField(max_length=50)
 
     def __str__(self):
-        chaine = f"{self.prenom}{self.nom} né le {self.date_de_naissance}"
+        chaine = f"{self.prenom} {self.nom} né le {self.date_de_naissance}"
         return chaine
 
     def repertoire2(self):

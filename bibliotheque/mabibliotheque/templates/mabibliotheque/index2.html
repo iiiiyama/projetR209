@@ -1,0 +1,12 @@
+{% extends "mabibliotheque/index.html" %}
+
+{% block title %} acteur {% endblock %}
+<body>
+{% block content %}
+<ol> <h3> Ma liste d'acteurs</h3>
+    {% for l in liste2 %}
+        <li> {{l}} <a href="/mabibliotheque/affiche2/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update2/{{l.id}}/"> editer</a> <a href="/mabibliotheque/delete2/{{l.id}}/"> supprimer</a></li>
+    {% endfor %}
+</ol>
+{% endblock %}
+</body>

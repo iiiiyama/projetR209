@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1> Bibliotheque de film </h1>
-<a href="/mabibliotheque/index"> listes </a>
+<a href="/mabibliotheque/index"> listes de film</a>
+<a href="/mabibliotheque/index2"> listes d'acteurs'</a>
 <a href="/mabibliotheque/ajout"> répertorié un film </a>
 <a href="/mabibliotheque/formulaire2"> répertorier un acteur</a>
 
@@ -15,11 +16,6 @@
 <ol> <h3> Ma liste de films</h3>
     {% for l in liste %}
         <li> {{l}} <a href="/mabibliotheque/affiche/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update/{{l.id}}/"> editer</a> <a href="/mabibliotheque/delete/{{l.id}}/"> supprimer</a></li>
-    {% endfor %}
-</ol>
-<ol> <h3> Ma liste d'acteurs</h3>
-    {% for l in liste %}
-        <li> {{l}} <a href="/mabibliotheque/affiche2/{{l.id}}/">montrer</a> <a href="/mabibliotheque/update2/{{l.id}}/"> editer</a> <a href="/mabibliotheque/delete2/{{l.id}}/"> supprimer</a></li>
     {% endfor %}
 </ol>
 {% endblock %}
