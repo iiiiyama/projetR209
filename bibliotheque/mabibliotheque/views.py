@@ -95,14 +95,14 @@ def traitement2(request):
         return render(request,"mabibliotheque/formulaire2.html", {"form": aform})
 
 def updatetraitement2(request, id):
-    form = ActeurForm(request.POST)
-    if form.is_valid():
-        acteur = form.save(commit=False)
+    aform = ActeurForm(request.POST)
+    if aform.is_valid():
+        acteur = aform.save(commit=False)
         acteur.id = id
         acteur.save()
-        return HttpResponseRedirect("/mabibliotheque/index2/")
+        return HttpResponseRedirect("/mabibliotheque/index/")
     else:
-        return render(request, "mabibliotheque/formulaire2.html", {"form": form, "id": id})
+        return render(request, "mabibliotheque/formulaire2.html", {"form": aform, "id": id})
 
 def affiche2(request, id):
     acteur = models.Acteur.objects.get(pk=id)
