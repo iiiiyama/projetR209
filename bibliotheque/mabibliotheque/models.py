@@ -1,29 +1,29 @@
 from django.db import models
 
-# Create your models here.
+
+class Acteur(models.Model):
+    nomprenom = models.CharField(max_length=50)
+
+    def __str__(self):
+        chaine = f"{self.nomprenom}"
+        return chaine
+
+    def repertoire2(self):
+        return {"nom prenom":self.nomprenom}
+
+
 class Film(models.Model):
     titre = models.CharField(max_length=100)
     realisateur = models.CharField(max_length=100)
     date_sortie = models.DateField(blank=True, null=True)
     duree = models.IntegerField(blank=False)
     resume = models.TextField(null=True, blank=True)
+    acteur = models.ForeignKey(Acteur, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         chaine = f"{self.titre} fait par {self.realisateur} parus le {self.date_sortie}"
         return chaine
 
     def repertoire(self):
-        return {"titre":self.titre, "realisateur":self.realisateur, "date_sortie":self.date_sortie, "duree":self.duree, "resume":self.resume}
+        return {"titre":self.titre, "realisateur":self.realisateur, "date_sortie":self.date_sortie, "duree":self.duree, "resume":self.resume, "acteur": self.acteur}
 
-class Acteur(models.Model):
-    nom = models.CharField(max_length=50)
-    prenom = models.CharField(max_length=50)
-    date_de_naissance = models.DateField(blank=True, null=True)
-    filmographie = models.CharField(max_length=50)
-
-    def __str__(self):
-        chaine = f"{self.prenom} {self.nom} né le {self.date_de_naissance}"
-        return chaine
-
-    def repertoire2(self):
-        return {"nom":self.nom, "prenom":self.prenom, "date_de_naissance":self.date_de_naissance, "filmographie":self.filmographie}

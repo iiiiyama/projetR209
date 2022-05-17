@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{%static 'mabibliotheque/style.css'%}">
 <meta charset="UTF-8">
 <title>affiche</title>
 </head>
 <body>
-<p> vous avez ajouté le film suivant {{film}} {{film.id}} </p>
+<p> Vous avez ajouté le film suivant, {{film}} .</p>
 <a href="/mabibliotheque/index"> retour à la bibliotheque</a>
 </body>
 </html>
