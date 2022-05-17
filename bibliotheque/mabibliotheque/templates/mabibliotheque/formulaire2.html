@@ -4,12 +4,12 @@
 
 {% block content %}
     {% if id != None %}
-    <form method="post" action="/mabibliotheque/updatetraitement2/{{id}}">
+    <form method="post" action="/mabibliotheque/updatetraitement2/{{id}}/">
     {% else %}
         <form method="post" action="/mabibliotheque/traitement2/">
     {% endif %}
     {% csrf_token %}
     {{ form.as_ul }}
-    <input type="submit" value="envoyer les renseignements">
+    <input class="envoi" type="submit" value="envoyer les renseignements">
 </form>
 {% endblock %}

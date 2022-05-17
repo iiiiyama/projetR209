@@ -20,6 +20,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 4em;
     text-align: center;
+    margin-bottom : 70px;
     text-shadow: 7px 7px 6px rgb(309, 109, 138);
     color:#FF85AC;
     }
@@ -37,6 +38,23 @@ a{
     justify-content: space-between;
     margin: 5em;
     }
-form {
-    margin-top : 50px;
+
+li {
+    list-style : none;
+    margin-bottom: 20px;
+    font-family : 'Andale Mono', monospace;
     }
+ol, form {
+    margin-top : 50px;
+    padding : 3%;
+    background-color : #C080F1;
+    border-radius : .4em;
+    text-align : center;
+    margin-left: auto;
+    margin-right: auto;
+    width : 800px;
+}
+.envoi {
+    background-color : #BBF5E8;
+    padding : 6px;
+}

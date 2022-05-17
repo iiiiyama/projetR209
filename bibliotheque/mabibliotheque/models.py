@@ -9,7 +9,7 @@ class Acteur(models.Model):
         return chaine
 
     def repertoire2(self):
-        return {"nom prenom":self.nomprenom}
+        return {"nomprenom":self.nomprenom}
 
 
 class Film(models.Model):
